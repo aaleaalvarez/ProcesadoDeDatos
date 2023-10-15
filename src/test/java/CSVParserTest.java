@@ -4,13 +4,20 @@ import org.junit.Test;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Test;
+import java.util.List;
+import static org.junit.Assert.assertEquals;
+
 public class CSVParserTest {
 
     @Test
     public void testParse() {
         List<Cliente> clientes = CSVParser.parse("src/test/resources/test_data.csv");
+
+        // Verificar si el número de clientes es el esperado
         assertEquals(2, clientes.size());
 
+        // Verificar si los atributos de los clientes son correctos
         Cliente cliente1 = clientes.get(0);
         assertEquals("1", cliente1.getCodigoCliente());
         assertEquals("Empresa1", cliente1.getNombreEmpresa());

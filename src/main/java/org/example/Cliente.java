@@ -36,7 +36,12 @@ public class Cliente {
      */
     private String nombreResponsable;
 
-    public Cliente(String number, String empresa1, String ciudad1, String mail, String responsable1) {
+    public Cliente(String codigoCliente, String nombreEmpresa, String localidad, String correoElectronico, String nombreResponsable) {
+        this.codigoCliente = codigoCliente;
+        this.nombreEmpresa = nombreEmpresa;
+        this.localidad = localidad;
+        this.correoElectronico = correoElectronico;
+        this.nombreResponsable = nombreResponsable;
     }
 
     public Cliente() {
