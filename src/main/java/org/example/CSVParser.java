@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Clase que proporciona métodos para parsear un archivo CSV y convertirlo en una lista de objetos Cliente.
@@ -22,6 +24,7 @@ public class CSVParser {
      */
     public static List<Cliente> parse(String archivoCSV) {
         List<Cliente> clientes = new ArrayList<>();
+        Set<String> responsables = new HashSet<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
             String linea;
@@ -32,13 +35,20 @@ public class CSVParser {
                     System.out.println();
                     continue;
                 }
+                //Mejora del proyecto: Encuentra duplicados de responsable y no crea su txt
+                String responsable = datosCliente[4];
+                if (responsables.contains(responsable)) {
+                    System.out.println("Duplicado encontrado para el nombre del responsable: " + responsable);
+                    continue;
+                }
                 Cliente cliente = new Cliente();
                 cliente.setCodigoCliente(datosCliente[0]);
                 cliente.setNombreEmpresa(datosCliente[1]);
                 cliente.setLocalidad(datosCliente[2]);
                 cliente.setCorreoElectronico(datosCliente[3]);
-                cliente.setNombreResponsable(datosCliente[4]);
+                cliente.setNombreResponsable(responsable);
                 clientes.add(cliente);
+                responsables.add(responsable);
             }
         } catch (IOException e) {
             e.printStackTrace();
