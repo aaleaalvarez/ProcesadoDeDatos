@@ -35,11 +35,4 @@ public class Cliente {
      * Nombre del responsable del cliente.
      */
     private String nombreResponsable;
-
-    public Cliente(String number, String empresa1, String ciudad1, String mail, String responsable1) {
-    }
-
-    public Cliente() {
-
-    }
 }
